@@ -5,9 +5,15 @@
 {% endblock %}
 
 
+{% block nav %}
+ {{block.super}}
+    <li style="margin-top: 10px; margin-left: 15px;">
+        <button id="loginFormToggleButton" class="btn btn-primary" data-toggle="modal" data-target="#loginModal"><span class="network-name">lOGIN</span></button>
+    </li>
+{% endblock nav %}
+
 
 {% block content %}
-
     <!-- Header -->
     <div class="intro-header">
         <div class="container">
@@ -19,9 +25,7 @@
                         <h3>ACMS</h3>
                         <hr class="intro-divider">
                         <ul class="list-inline intro-social-buttons">
-                            <li>
-                                <button id="loginFormToggleButton" class="btn btn-default btn-lg" data-toggle="modal" data-target="#loginModal"><span class="network-name">lOGIN</span></button>
-                            </li>
+
                         </ul>
                     </div>
                 </div>
@@ -37,9 +41,9 @@
     <div class="modal fade" {% if messages %} id="loginModalJs" {% else %} id="loginModal"{% endif %}  tabindex="-1" role="dialog" aria-labelledby="modalLabel" data-backdrop ="static" >
       <div  class="modal-dialog " role="document">
         <div class="modal-content">
-          <div class="modal-header" style="text-align:center">
+          <div class="modal-header" style="text-align:center; height: 50px">
             <button type="button" name="button" class="close" data-dismiss="modal" arial-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 id="modalLabel">Login</h4>
+            <h4 id="modalLabel">HDMS</h4>
           </div><!-- modal-header -->
           <div class="modal-body">
               {% if messages %}
@@ -52,31 +56,21 @@
                   {% endfor %}
                 </div>
               {% endif %}
-            <form class="form-horizontal" action="{% url 'ACMS:index' %}" method="post">
-                {% csrf_token %}
-                <div class="form-group">
-                    <label for="username" class="col-sm-2 control-label">Username</label>
-                    <div class="controls col-sm-10">
-                      <input name="username" type="text" value="" class="form-control login-input " id="username" placeholder="Username" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="password" class="col-sm-2 control-label">Password</label>
-                    <div class="controls col-sm-10">
-                      <input name="password" type="password" value="" class="form-control login-input" id="password" placeholder="Password" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div style="text-align: right;" class="col-sm-10 col-sm-offset-2" >
-                       <input style="width: 100%" class= "btn btn-primary" type="submit" value="login" >
-                       <p> <a href="#"  style="color: red" >Forgot Password?</a> </p>
-                    </div>
-                </div>
-
-
+            <form action="{% url 'ACMS:index' %}" method="post">
+                 {% csrf_token %}
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input name="username" type="text" class="form-control" id="username" required="true">
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input name="password" type="password" class="form-control" id="password" required="true" placeholder="**********">
+              </div>
+              <div class="form-group">
+                  <input style="width: 100%" class= "btn btn-primary" type="submit" value="Log in" >
+              </div>
             </form>
           </div><!-- modal-body -->
-
         </div><!-- modal-content -->
       </div><!-- modal-dialog -->
     </div><!-- modal -->
