@@ -2,16 +2,24 @@
 {% load staticfiles %}
 
 {% block title %}
-    Homepage
+    <title>Homepage</title>
 {% endblock title %}
 
 {% block nav %}
-<li>
-    <a href="#"> {{name}}</a>
-
-</li>
-{{block.super}}
-<li><a href="{% url 'ACMS:index' %}">Logout</a></li>
+    {{block.super}}
+    <li class="dropdown">
+        <a  href="#" class="dropdown-toggle " type="button" id="userDropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+             {{name}}
+            <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="userDropdownMenu">
+            <li><a href="#">Signed in as {{username}}</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">Change Password</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="{% url 'ACMS:index' %}" >Log out</a></li>
+        </ul>
+    </li>
 {% endblock nav %}
 
 {% block content %}
