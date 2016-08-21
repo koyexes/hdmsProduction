@@ -9,12 +9,8 @@ $('#loginModalJs').on('hidden.bs.modal', function(e){
     $('#loginModalJs').attr('id', 'loginModal');
 });
 
-$('.iconLabel').mouseenter(function(e){
-    /*var element = e.target();
-    alert(element);
-   element.siblings('.icon')[0].css({" -ms-filter" :"grayscale(0%)", "filter" : "grayscale(0%)", "-webkit-filter" : "grayscale(0%)"});*/
-});
+$('.iconLabel').hover(
+    function(e){ $(e.target).parent().siblings('img').css({" -ms-filter" :"grayscale(0%)", "filter" : "grayscale(0%)", "-webkit-filter" : "grayscale(0%)"});},
+    function(e){ $(e.target).parent().siblings('img').css({" -ms-filter" :"grayscale(100%)", "filter" : "grayscale(100%)", "-webkit-filter" : "grayscale(100%)"});}
+);
 
-$('.iconLabel').mouseleave(function(e){
-   $('.iconLabel').siblings('img').css({" -ms-filter" :"grayscale(100%)", "filter" : "grayscale(100%)", "-webkit-filter" : "grayscale(100%)"});
-});

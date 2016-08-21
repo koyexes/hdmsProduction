@@ -33,7 +33,7 @@ def index(request):
 
 @login_required(redirect_field_name="", login_url='/acms/login') # login required to view this page
 def homepage(request):
-    context = {"name" : "%s %s" % (request.user.last_name, request.user.first_name)}
+    context = {"name" : "%s %s" % (request.user.last_name, request.user.first_name), "username" : request.user.username}
     return render(request, 'acms/homepage.html', context)
 
 
