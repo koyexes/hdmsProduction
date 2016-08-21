@@ -25,11 +25,13 @@ def index(request):
 
     else:
         form = LoginForm() # creating new form
+        if request.path == "/acms/login/":
+            messages.info(request, "Please log in");
         logout(request) # logging out the user and clearing the user's session
 
     return render(request, 'acms/index.html', {"form": form})
 
-@login_required(redirect_field_name="", login_url='/acms/') # login required to view this page
+@login_required(redirect_field_name="", login_url='/acms/login') # login required to view this page
 def homepage(request):
     context = {"name" : "%s %s" % (request.user.last_name, request.user.first_name)}
     return render(request, 'acms/homepage.html', context)
