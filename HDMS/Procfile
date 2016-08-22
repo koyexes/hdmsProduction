@@ -1,0 +1,1 @@
+web: gunicorn HDMS.wsgi --log-file -
