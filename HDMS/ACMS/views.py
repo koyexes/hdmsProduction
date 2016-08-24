@@ -55,7 +55,12 @@ def homepage(request):
     context = {"name" : "%s %s" % (request.user.last_name, request.user.first_name), "username" : request.user.username, "admin" : admin} # declaring the template context
     return render(request, 'acms/homepage.html', context) # rendering the homepage template
 
-
+@login_required(redirect_field_name="", login_url='/acms/login')
+def workpage(request):
+    admin = False
+    if request.user.is_staff: admin = True # checking if the user has administrative rights
+    context = {"name" : "%s %s" % (request.user.last_name, request.user.first_name), "username" : request.user.username, "admin" : admin}
+    return render(request, 'acms/workpage.html', context)
 
 
 
