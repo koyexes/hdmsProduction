@@ -13,15 +13,15 @@
             <span class="caret"></span>
         </a>
         <ul class="dropdown-menu" aria-labelledby="userDropdownMenu">
-            <li><a href="#">Signed in as {{username}}</a></li>
+            <li><a href="#"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;Signed in as {{username}}</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#">Change Password</a></li>
+            <li><a href="#"> <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>&nbsp;Change Password</a></li>
             <li role="separator" class="divider"></li>
             {% if admin %}
-                <li><a href="/admin/" target="_blank">Admin Portal</a></li>
+                <li><a href="/admin/" target="_blank"><span class="glyphicon glyphicon-hand-right" aria-hidden="true"></span>&nbsp;Admin Portal</a></li>
                 <li role="separator" class="divider"></li>
             {% endif %}
-            <li><a href="{% url 'ACMS:index' %}" >Log out</a></li>
+            <li><a href="{% url 'ACMS:index' %}" > <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> &nbsp;Log out</a></li>
         </ul>
     </li>
 {% endblock nav %}

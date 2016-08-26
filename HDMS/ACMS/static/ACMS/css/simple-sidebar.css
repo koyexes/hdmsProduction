@@ -54,6 +54,7 @@
 
 /* Sidebar Styles */
 
+
 .sidebar-nav {
     position: absolute;
     top: 0;
@@ -64,7 +65,7 @@
 }
 
 .sidebar-nav li {
-    text-indent: 20px;
+    /*text-indent: 20px;*/
     line-height: 40px;
 }
 
@@ -94,6 +95,7 @@
     height: 65px;
     font-size: 18px;
     line-height: 60px;
+    padding-left: 15px;
 }
 
 .sidebar-nav > .sidebar-brand a {
