@@ -51,7 +51,7 @@
                             <div id="patient-submenu" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="patient">
                               <div class="list-group">
                                 <ul>
-                                    <li><a href="#">Add Patient</a></li>
+                                    <li><a href="#" role="button" data-toggle="modal" data-target="#patientForm">Add Patient</a></li>
                                     <li><a href="#">Find Patient</a></li>
                                 </ul>
                               </div>
@@ -69,7 +69,7 @@
                             <div id="drug-submenu" class="panel-collapse collapse" role="tabpanel" aria-labelledby="drug">
                               <div class="list-group">
                                 <ul>
-                                    <li><a href="#">Add Drug</a></li>
+                                    <li><a href="#" role="button" data-toggle="modal" data-target="#drugForm">Add Drug</a></li>
                                     <li><a href="#">Find Drug</a></li>
                                 </ul>
                               </div>
@@ -155,6 +155,65 @@
     </div>
     <!-- /#wrapper -->
 
+
+<!-- patient form -->
+<div class="modal fade" id="patientForm" tabindex="-1" role="dialog" aria-labelledby="modalLabel" data-backdrop ="static" >
+      <div  class="modal-dialog " role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" name="button" class="close" data-dismiss="modal" arial-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 id="modalLabel">New Patient</h4>
+          </div><!-- modal-header -->
+          <div class="modal-body">
+             <form action="{% url 'ACMS:index' %}" method="post">
+                 {% csrf_token %}
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input name="username" type="text" class="form-control" id="username" required="true">
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input name="password" type="password" class="form-control" id="password" required="true" placeholder="**********">
+              </div>
+              <div class="form-group">
+                  <input style="width: 100%" class= "btn btn-primary" type="submit" value="Log in" >
+              </div>
+            </form>
+          </div><!-- modal-body -->
+        </div><!-- modal-content -->
+      </div><!-- modal-dialog -->
+</div><!-- modal -->
+<!-- end of patient modal form -->
+
+<!-- drug form -->
+<div class="modal fade" id="drugForm" tabindex="-1" role="dialog" aria-labelledby="modalLabel" data-backdrop ="static" >
+      <div  class="modal-dialog " role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" name="button" class="close" data-dismiss="modal" arial-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 id="modalLabel">New Drug</h4>
+          </div><!-- modal-header -->
+          <div class="modal-body">
+             <form action="{% url 'ACMS:index' %}" method="post">
+                 {% csrf_token %}
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input name="username" type="text" class="form-control" id="username" required="true">
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input name="password" type="password" class="form-control" id="password" required="true" placeholder="**********">
+              </div>
+              <div class="form-group">
+                  <input style="width: 100%" class= "btn btn-primary" type="submit" value="Log in" >
+              </div>
+            </form>
+          </div><!-- modal-body -->
+        </div><!-- modal-content -->
+      </div><!-- modal-dialog -->
+</div><!-- modal -->
+<!-- end of drug modal form -->
+
 {% endblock content %}
 
 {% block footer %}
@@ -164,7 +223,6 @@
     {{block.super}}
      <!-- Menu Toggle Script -->
     <script>
-
     $("#brandName").attr({href : "#menu-toggle", id : "menu-toggle"});
     $("#menu-toggle").click(function(e) {
         e.preventDefault();

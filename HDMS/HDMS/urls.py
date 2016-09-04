@@ -19,5 +19,5 @@ from django.contrib import admin
 admin.site.site_header = "HDMS Administration"
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^acms/', include('ACMS.urls') )
+    url(r'^acms/', include('ACMS.urls') ),
 ]

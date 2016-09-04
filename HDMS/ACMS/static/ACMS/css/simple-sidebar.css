@@ -65,8 +65,13 @@
 }
 
 .sidebar-nav li {
-    /*text-indent: 20px;*/
+    display: block;
     line-height: 40px;
+}
+
+.sidebar-nav li ul {
+   list-style: none;
+    paddi
 }
 
 
@@ -78,18 +83,18 @@
 
 }
 
-.sidebar-nav dd a:hover {
+/*.sidebar-nav li a:hover {
     text-decoration: none;
     color: #fff;
-    background: rgba(255,255,255,0.2);
+    background: blue;
 
 
-}
+}*/
 
-.sidebar-nav li a:active,
+/*.sidebar-nav li a:active,
 .sidebar-nav li a:focus {
     text-decoration: none;
-}
+}*/
 
 .sidebar-nav > .sidebar-brand {
     height: 65px;
@@ -147,5 +152,12 @@
 }
 .panel-title {
     color: white;
+    display: block;
+    height: 30px;
+}
+
+.panel-heading:hover {
+    background-color: dodgerblue;
+    border-radius: 0px;
 }
 
