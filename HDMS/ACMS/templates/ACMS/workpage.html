@@ -51,7 +51,7 @@
                             <div id="patient-submenu" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="patient">
                               <div class="list-group">
                                 <ul>
-                                    <li><a href="#" role="button" data-toggle="modal" data-target="#patientForm">Add Patient</a></li>
+                                    <li><a id="addPatient"  role="button" data-toggle="modal" data-target="#patientForm">Add Patient</a></li>
                                     <li><a href="#">Find Patient</a></li>
                                 </ul>
                               </div>
@@ -69,7 +69,7 @@
                             <div id="drug-submenu" class="panel-collapse collapse" role="tabpanel" aria-labelledby="drug">
                               <div class="list-group">
                                 <ul>
-                                    <li><a href="#" role="button" data-toggle="modal" data-target="#drugForm">Add Drug</a></li>
+                                    <li><a role="button" data-toggle="modal" data-target="#drugForm">Add Drug</a></li>
                                     <li><a href="#">Find Drug</a></li>
                                 </ul>
                               </div>
@@ -168,15 +168,54 @@
              <form action="{% url 'ACMS:index' %}" method="post">
                  {% csrf_token %}
               <div class="form-group">
-                <label for="username">Username</label>
-                <input name="username" type="text" class="form-control" id="username" required="true">
+                <label for="surname">Surname</label>
+                <input name="surname" type="text" class="form-control" id="surname" maxlength="20" required="true">
               </div>
               <div class="form-group">
-                <label for="password">Password</label>
-                <input name="password" type="password" class="form-control" id="password" required="true" placeholder="**********">
+                <label for="firstname">Firstname</label>
+                <input name="firstname" type="text" class="form-control" id="firstname" maxlength="20" required="true">
               </div>
               <div class="form-group">
-                  <input style="width: 100%" class= "btn btn-primary" type="submit" value="Log in" >
+                <label for="othername">Othername</label>
+                <input name="othername" type="text" class="form-control" id="othername" maxlength="20">
+              </div>
+              <div class="form-group">
+                <label for="cardNo">Card No</label>
+                <input name="cardNo" type="text" class="form-control" id="cardNo" required="true" maxlength="15">
+              </div>
+              <div class="radio">
+                  <span style="margin-right : 20px;">Gender</span>
+                  <label>
+                    <input type="radio" name="gender" id="male" value="M" checked>
+                    Male
+                  </label>
+                  <label>
+                    <input type="radio" name="gender" id="female" value="F">
+                    Female
+                  </label>
+              </div>
+               <div class="form-group">
+                <label for="mobile">Mobile</label>
+                <input name="mobile" type="text" class="form-control" id="mobile"  maxlength="15">
+              </div>
+              <div class="form-group">
+                <label for="hmo">HMO</label>
+                <select class="form-control">
+                    <option></option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="origin">State of Origin</label>
+                <select class="form-control">
+                    <option></option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="address">Address</label>
+                <input name="address" type="text" class="form-control" id="address" required="true">
+              </div>
+              <div class="form-group">
+                  <input style="width: 100%" class= "btn btn-danger" type="submit" value="Submit" >
               </div>
             </form>
           </div><!-- modal-body -->
@@ -223,10 +262,10 @@
     {{block.super}}
      <!-- Menu Toggle Script -->
     <script>
-    $("#brandName").attr({href : "#menu-toggle", id : "menu-toggle"});
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
+        $("#brandName").attr({href : "#menu-toggle", id : "menu-toggle"});
+        $("#menu-toggle").click(function(e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
     </script>
 {% endblock scripts %}

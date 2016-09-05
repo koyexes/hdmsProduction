@@ -147,10 +147,6 @@ h6 {
     margin-top: 0;
 }
 
-/* bringing modal dialog down */
-.modal-dialog{
-    margin-top: 10%;
-}
 
 @media(max-width:1199px) {
     ul.banner-social-buttons {
@@ -181,7 +177,8 @@ h6 {
 @media (min-width: 400px) {
     .modal-dialog {
         width: 350px;
-        margin: 10% auto;
+        margin: 10px auto;
+
     }
 
     .controls {
@@ -227,4 +224,10 @@ p.copyright {
 }
 
 /* end of homepage specific styling */
+
+/* workpage css */
+.modal-content {
+    background-color: lightskyblue;
+}
+
 
