@@ -51,7 +51,7 @@
                             <div id="patient-submenu" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="patient">
                               <div class="list-group">
                                 <ul>
-                                    <li><a id="addPatient"  role="button" data-toggle="modal" data-target="#patientForm">Add Patient</a></li>
+                                    <li><a id="addPatient"  role="button" data-toggle="modal" data-target="#patientModalForm">Add Patient</a></li>
                                     <li><a href="#">Find Patient</a></li>
                                 </ul>
                               </div>
@@ -91,8 +91,7 @@
                                     <li><a href="#">Find Authorization Code</a></li>
                                 </ul>
                               </div>
-                            </div>
-                        </div>
+                           </div>
                       <!-- hmo panel -->
                         <div class="panel panel-default">
                             <div class="panel-heading" role="tab" id="hmo">
@@ -157,7 +156,7 @@
 
 
 <!-- patient form -->
-<div class="modal fade" id="patientForm" tabindex="-1" role="dialog" aria-labelledby="modalLabel" data-backdrop ="static" >
+<div class="modal fade" id="patientModalForm" tabindex="-1" role="dialog" aria-labelledby="modalLabel" data-backdrop ="static" >
       <div  class="modal-dialog " role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -165,7 +164,7 @@
             <h4 id="modalLabel">New Patient</h4>
           </div><!-- modal-header -->
           <div class="modal-body">
-             <form action="{% url 'ACMS:index' %}" method="post">
+             <form id="patientForm" idaction="{% url 'ACMS:index' %}" method="post">
                  {% csrf_token %}
               <div class="form-group">
                 <label for="surname">Surname</label>
@@ -201,7 +200,10 @@
               <div class="form-group">
                 <label for="hmo">HMO</label>
                 <select class="form-control">
-                    <option></option>
+                    <option>Select an HMO</option>
+                    {% for hmo in hmoList %}
+                        <option>{{hmo.name}} </option>
+                    {% endfor %}
                 </select>
               </div>
               <div class="form-group">
