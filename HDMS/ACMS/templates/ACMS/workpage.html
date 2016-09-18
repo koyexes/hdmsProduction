@@ -164,26 +164,26 @@
             <h4 id="modalLabel">New Patient</h4>
           </div><!-- modal-header -->
           <div class="modal-body">
-             <form id="patientForm" idaction="{% url 'ACMS:index' %}" method="post">
+             <form id="patientForm" action="{% url 'ACMS:index' %}" method="post">
                  {% csrf_token %}
               <div class="form-group">
-                <label for="surname">Surname</label>
+                <label for="surname">Surname<span id="required">*</span></label>
                 <input name="surname" type="text" class="form-control" id="surname" maxlength="20" required="true">
               </div>
               <div class="form-group">
-                <label for="firstname">Firstname</label>
+                <label for="firstname">Firstname<span id="required">*</span></label>
                 <input name="firstname" type="text" class="form-control" id="firstname" maxlength="20" required="true">
               </div>
               <div class="form-group">
-                <label for="othername">Othername</label>
-                <input name="othername" type="text" class="form-control" id="othername" maxlength="20">
+                <label for="othername">Othername<span id="required">*</span></label>
+                <input name="othername" type="text" class="form-control" id="othername" maxlength="20" required="true">
               </div>
               <div class="form-group">
-                <label for="cardNo">Card No</label>
-                <input name="cardNo" type="text" class="form-control" id="cardNo" required="true" maxlength="15">
+                <label for="cardNo">Card No<span id="required">*</span></label>
+                <input name="cardNo" type="text" class="form-control" id="cardNo" required="true" maxlength="15" required="true">
               </div>
               <div class="radio">
-                  <span style="margin-right : 20px;">Gender</span>
+                  <span style="margin-right : 20px;">Gender<span id="required">*</span></span>
                   <label>
                     <input type="radio" name="gender" id="male" value="M" checked>
                     Male
@@ -194,11 +194,11 @@
                   </label>
               </div>
                <div class="form-group">
-                <label for="mobile">Mobile</label>
-                <input name="mobile" type="text" class="form-control" id="mobile"  maxlength="15">
+                <label for="mobile">Mobile<span id="required">*</span></label>
+                <input name="mobile" type="text" class="form-control" id="mobile"  maxlength="15" required="true">
               </div>
               <div class="form-group">
-                <label for="hmo">HMO</label>
+                <label for="hmo">HMO<span id="required">*</span></label>
                 <select class="form-control">
                     <option>Select an HMO</option>
                     {% for hmo in hmoList %}
@@ -207,13 +207,16 @@
                 </select>
               </div>
               <div class="form-group">
-                <label for="origin">State of Origin</label>
+                <label for="origin">State of Origin<span id="required">*</span></label>
                 <select class="form-control">
-                    <option></option>
+                    <option>Select a State</option>
+                    {% for state in stateList %}
+                     <option >{{ state.state_name }}</option>
+                    {% endfor %}
                 </select>
               </div>
               <div class="form-group">
-                <label for="address">Address</label>
+                <label for="address">Address<span id="required">*</span></label>
                 <input name="address" type="text" class="form-control" id="address" required="true">
               </div>
               <div class="form-group">

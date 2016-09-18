@@ -108,7 +108,7 @@
                   {% endif %}
               {% endfor %}
 
-            <form action="{% url 'ACMS:index' %}" method="post">
+            <form id="loginForm" action="{% url 'ACMS:index' %}" method="post">
                  {% csrf_token %}
               <div class="form-group">
                 <label for="username">Username</label>
@@ -178,4 +178,4 @@
 
     </div>
     <!-- /.banner -->
-{% endblock %}
+{% endblock content%}

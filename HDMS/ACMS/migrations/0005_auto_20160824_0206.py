@@ -17,6 +17,18 @@ class Migration(migrations.Migration):
 
     operations = [
 
+        migrations.CreateModel(
+            name='drug',
+            fields=[
+                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('drug_name', models.CharField(max_length=50)),
+                ('drug_code', models.CharField(max_length=15)),
+                ('date_added', models.DateTimeField(default=django.utils.timezone.now)),
+                ('added_by', models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE,
+                                               to=settings.AUTH_USER_MODEL)),
+            ],
+        ),
+
         migrations.AlterField(
             model_name='patient',
             name='origin',

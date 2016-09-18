@@ -229,5 +229,8 @@ p.copyright {
 .modal-content {
     background-color: lightskyblue;
 }
+#required {
+    color: red;
+}
 
 

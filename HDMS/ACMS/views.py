@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.contrib.auth.models import User
 from django.contrib.auth import hashers
-from models import hmo_list
+from models import hmo_list, state
 
 
 # Create your views here.
@@ -60,8 +60,8 @@ def homepage(request):
 def workpage(request):
     admin = False
     hmoList = hmo_list.objects.order_by("name")
-    if request.user.is_staff: admin = True # checking if the user has administrative rights
-    context = {"name" : "%s %s" % (request.user.last_name, request.user.first_name), "username" : request.user.username, "admin" : admin, "hmoList" : hmoList}
+    stateList = state.objects.order_by("state_name")
+    context = {"name" : "%s %s" % (request.user.last_name, request.user.first_name), "username" : request.user.username, "admin" : admin, "hmoList" : hmoList, "stateList" : stateList}
     return render(request, 'acms/workpage.html', context)
 
 

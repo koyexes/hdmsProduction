@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import hmo_list, drug, patient
+from .models import hmo_list, drug, patient, state
 # Register your models here.
 
 class HmoList(admin.ModelAdmin):
@@ -11,6 +11,10 @@ class Patient(admin.ModelAdmin):
 class Drug(admin.ModelAdmin):
     list_display = ('drug_name', 'drug_code', 'date_added', 'added_by')
 
+class State(admin.ModelAdmin):
+    list_display = ('state_name',)
+
 admin.site.register(hmo_list, HmoList)
 admin.site.register(patient, Patient)
 admin.site.register(drug, Drug)
+admin.site.register(state, State)

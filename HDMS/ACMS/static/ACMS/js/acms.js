@@ -7,6 +7,11 @@ $('#loginModalJs').modal('show');// automatically showing the modal login error 
 $('#loginModalJs').on('hidden.bs.modal', function(e){
     $('#loginErrorAlert').alert('close');
     $('#loginModalJs').attr('id', 'loginModal');
+    $('#loginForm').trigger('reset');
+});
+
+$('#loginModal').on('show.bs.modal', function (e) {
+     $("#loginForm").trigger('reset');
 });
 
 // works with the homepage icons, changing their color gradient as mouse hovers over their labels
@@ -16,7 +21,8 @@ $('.iconLabel').hover(
 );
 
 // resetting all form inputs when form modal closes
-$('#patientModalFrom').on('hidden.bs.modal', function(e){
-   $('#patientForm').reset();
+$('#patientModalForm').on('hidden.bs.modal', function(e){
+   // alert("Hello world");
+   $('#patientForm').trigger('reset');
 });
 
