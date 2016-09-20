@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import LoginForm
+from .forms import LoginForm, PatientForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.http.response import HttpResponseRedirect
@@ -20,7 +20,7 @@ def index(request):
             if user is not None:
                 if user.is_active: # checking if the user is still active
                     login(request, user) # logging the user in
-                    request.session.set_expiry(1800) # setting the session expiry time, after which login is required
+                    #request.session.set_expiry(1800) # setting the session expiry time, after which login is required
                     return HttpResponseRedirect(reverse('ACMS:homepage'))
 
             else:
@@ -59,10 +59,12 @@ def homepage(request):
 @login_required(redirect_field_name="", login_url='/acms/login')
 def workpage(request):
     admin = False
-    hmoList = hmo_list.objects.order_by("name")
-    stateList = state.objects.order_by("state_name")
-    context = {"name" : "%s %s" % (request.user.last_name, request.user.first_name), "username" : request.user.username, "admin" : admin, "hmoList" : hmoList, "stateList" : stateList}
+    if request.user.is_staff: admin = True
+    patient_form = PatientForm(auto_id= False)
+    context = {"name" : "%s %s" % (request.user.last_name, request.user.first_name), "username" : request.user.username, 'admin': admin, "patient_form" : patient_form}
     return render(request, 'acms/workpage.html', context)
+
+
 
 
 

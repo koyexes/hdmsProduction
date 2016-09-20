@@ -8,7 +8,7 @@
 {% block bootstrap %}
     {{block.super}}
     <!-- Simple-sidebar  CSS -->
-    <link href="{% static 'ACMS/css/simple-sidebar.css' %}" rel="stylesheet">
+    <link href="{% static 'ACMS/css/simple-sidebar.css' %}" rel="stylesheet" />
 {% endblock bootstrap %}
 
 
@@ -164,60 +164,43 @@
             <h4 id="modalLabel">New Patient</h4>
           </div><!-- modal-header -->
           <div class="modal-body">
-             <form id="patientForm" action="{% url 'ACMS:index' %}" method="post">
+             <form id="patientForm" action="{% url 'ACMS:workpage' %}" method="post">
                  {% csrf_token %}
               <div class="form-group">
                 <label for="surname">Surname<span id="required">*</span></label>
-                <input name="surname" type="text" class="form-control" id="surname" maxlength="20" required="true">
+                  {{ patient_form.surname }}
               </div>
               <div class="form-group">
                 <label for="firstname">Firstname<span id="required">*</span></label>
-                <input name="firstname" type="text" class="form-control" id="firstname" maxlength="20" required="true">
+                {{ patient_form.firstname }}
               </div>
               <div class="form-group">
                 <label for="othername">Othername<span id="required">*</span></label>
-                <input name="othername" type="text" class="form-control" id="othername" maxlength="20" required="true">
+                {{ patient_form.othername }}
               </div>
               <div class="form-group">
                 <label for="cardNo">Card No<span id="required">*</span></label>
-                <input name="cardNo" type="text" class="form-control" id="cardNo" required="true" maxlength="15" required="true">
+                {{ patient_form.cardNo }}
               </div>
-              <div class="radio">
-                  <span style="margin-right : 20px;">Gender<span id="required">*</span></span>
-                  <label>
-                    <input type="radio" name="gender" id="male" value="M" checked>
-                    Male
-                  </label>
-                  <label>
-                    <input type="radio" name="gender" id="female" value="F">
-                    Female
-                  </label>
+              <div class="form-group">
+                <label for="gender">Gender<span id="required">*</span></label>
+                    {{ patient_form.gender }}
               </div>
                <div class="form-group">
                 <label for="mobile">Mobile<span id="required">*</span></label>
-                <input name="mobile" type="text" class="form-control" id="mobile"  maxlength="15" required="true">
+                {{ patient_form.mobileNo }}
               </div>
               <div class="form-group">
                 <label for="hmo">HMO<span id="required">*</span></label>
-                <select class="form-control">
-                    <option>Select an HMO</option>
-                    {% for hmo in hmoList %}
-                        <option>{{hmo.name}} </option>
-                    {% endfor %}
-                </select>
+                {{ patient_form.hmo }}
               </div>
               <div class="form-group">
                 <label for="origin">State of Origin<span id="required">*</span></label>
-                <select class="form-control">
-                    <option>Select a State</option>
-                    {% for state in stateList %}
-                     <option >{{ state.state_name }}</option>
-                    {% endfor %}
-                </select>
+                {{ patient_form.origin }}
               </div>
               <div class="form-group">
                 <label for="address">Address<span id="required">*</span></label>
-                <input name="address" type="text" class="form-control" id="address" required="true">
+                {{ patient_form.address }}
               </div>
               <div class="form-group">
                   <input style="width: 100%" class= "btn btn-danger" type="submit" value="Submit" >

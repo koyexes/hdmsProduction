@@ -31,7 +31,7 @@ class patient(models.Model):
     firstname = models.CharField(max_length = 20)
     othername = models.CharField(max_length= 20, null=True, default="NIL")
     card_no = models.CharField(max_length = 15)
-    gender = models.CharField(max_length = 1, choices=(("M", "Male"), ("F", "Female")), default="M");
+    gender = models.CharField(max_length = 1, choices=(("M", "Male"), ("F", "Female")), default="M")
     phone_number = models.CharField(max_length = 15, default="NIL")
     address = models.CharField(max_length = 50, default="NIL")
     hmo_id = models.ForeignKey(hmo_list,verbose_name="hmo_id", default= 0)
