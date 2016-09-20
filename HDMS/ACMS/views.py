@@ -20,7 +20,7 @@ def index(request):
             if user is not None:
                 if user.is_active: # checking if the user is still active
                     login(request, user) # logging the user in
-                    #request.session.set_expiry(1800) # setting the session expiry time, after which login is required
+                    request.session.set_expiry(1800) # setting the session expiry time, after which login is required
                     return HttpResponseRedirect(reverse('ACMS:homepage'))
 
             else:
