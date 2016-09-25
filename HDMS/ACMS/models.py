@@ -53,9 +53,3 @@ class drug(models.Model):
         return  ("%s" % self.drug_name).upper()
 
 
-class druggers(models.Model):
-    drug_name = models.CharField(max_length=50)
-    drug_code = models.CharField(max_length=15)
-    date_added = models.DateTimeField(default=timezone.now)
-    added_by = models.ForeignKey(User, default = User.objects.get(username = "Admin").id)
-
