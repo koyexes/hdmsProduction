@@ -164,7 +164,7 @@
             <h4 id="modalLabel">New Patient</h4>
           </div><!-- modal-header -->
           <div class="modal-body">
-             <form id="patientForm" action="{% url 'ACMS:workpage' %}" method="post">
+             <form id="patientForm" action="{% url 'ACMS:patient' %}" method="post">
                  {% csrf_token %}
               <div class="form-group">
                 <label for="surname">Surname<span id="required">*</span></label>
