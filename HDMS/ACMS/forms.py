@@ -21,6 +21,10 @@ class PatientForm(forms.Form):
         self.user = kwargs.pop('user', None)
         super(PatientForm, self).__init__(*args, **kwargs)
 
+    def __str__(self):
+        data = self.cleaned_data
+        return ("%s %s with card number: %s has been created" % (data['surname'], data['firstname'], data['cardNo']))
+
 
     def save (self):
         data = self.cleaned_data

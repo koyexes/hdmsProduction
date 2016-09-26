@@ -71,8 +71,10 @@ def patient(request):
         patient_form = PatientForm(request.POST, user = request.user)
         if patient_form.is_valid():
             patient_form.save()
+            messages.success(request, str(patient_form))
             return HttpResponseRedirect(reverse('ACMS:workpage'))
         else:
+            messages.error(request, "Patient couldn't be created")
             return HttpResponseRedirect(reverse('ACMS:workpage'))
     else:
         return HttpResponseRedirect(reverse('ACMS:workpage'))
