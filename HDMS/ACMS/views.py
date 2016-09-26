@@ -71,7 +71,7 @@ def patient(request):
         patient_form = PatientForm(request.POST, user = request.user)
         if patient_form.is_valid():
             patient_form.save()
-            return HttpResponseRedirect('http://www.google.com')
+            return HttpResponseRedirect(reverse('ACMS:workpage'))
         else:
             return HttpResponseRedirect(reverse('ACMS:workpage'))
     else:
